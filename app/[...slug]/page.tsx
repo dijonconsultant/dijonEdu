@@ -1,0 +1,24 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { PageHero } from "@/components/page-hero";
+
+const pages: Record<string, { eyebrow: string; title: string; description: string; body: string[] }> = {
+  about: { eyebrow: "About us", title: "Guidance that puts students first.", description: "Dijon Consultants is a student-focused advisory service for ambitious learners preparing to study abroad.", body: ["We listen before we recommend. Your goals, academic profile, budget and preferred destination shape every recommendation we make.", "Our team believes clear, honest advice and thoughtful preparation make every next step easier."] },
+  services: { eyebrow: "Our services", title: "Support from shortlist to departure.", description: "Choose the support you need, with a team that keeps your study-abroad plan moving.", body: ["University selection and programme matching.", "Application, statement and document guidance.", "Student visa preparation and pre-departure support."] },
+  "how-it-works": { eyebrow: "The process", title: "A straightforward path to studying abroad.", description: "Our process is built to keep the next step clear and manageable.", body: ["Tell us your goals in an initial consultation.", "Receive a considered pathway and timeline.", "Prepare your application and documents with confidence.", "Get ready to depart with clear visa guidance."] },
+  faq: { eyebrow: "FAQ", title: "Questions, answered.", description: "A few of the questions students commonly ask before getting started.", body: ["When should I start? Starting early gives you time to prepare and meet key deadlines.", "Can you help choose a country? Yes — we consider your interests, costs and long-term goals.", "Do you guarantee a visa? Decisions rest with the relevant authority, but we help you prepare carefully."] },
+  contact: { eyebrow: "Contact", title: "Let’s discuss your next step.", description: "Tell us a little about your study plans and a Dijon advisor will be in touch.", body: ["Email: info@dijonconsultants.com", "Book a consultation to start building your study-abroad plan."] },
+  "privacy-policy": { eyebrow: "Legal", title: "Privacy policy", description: "How Dijon Consultants handles personal information shared through this website.", body: ["We use information you provide to respond to your enquiry and deliver requested services.", "We do not sell personal information. Contact us with any privacy questions."] },
+  terms: { eyebrow: "Legal", title: "Terms of use", description: "The terms that apply when using the Dijon Consultants website.", body: ["Website content is general information and is not a guarantee of admission or visa approval.", "Please contact us for guidance specific to your circumstances."] }
+};
+
+const destinations: Record<string, string> = { portugal: "Portugal blends respected education with a welcoming, vibrant student experience.", poland: "Poland offers a growing range of English-taught programmes and a rich cultural setting.", latvia: "Latvia is an appealing European study destination with an international outlook.", hungary: "Hungary combines academic tradition, affordable living and lively student cities." };
+
+export default function CatchAllPage({ params }: { params: { slug: string[] } }) {
+  const [section, country] = params.slug;
+  if (section === "destinations" && !country) return <><PageHero eyebrow="Destinations" title="Find your place in Europe." description="Explore study destinations and begin shaping your international education." /><section className="container-page grid gap-5 py-16 sm:grid-cols-2">{Object.keys(destinations).map((name) => <Link key={name} href={`/destinations/${name}`} className="rounded-2xl bg-white p-7 font-serif text-2xl font-bold capitalize text-navy shadow-sm hover:text-gold">Study in {name} →</Link>)}</section></>;
+  if (section === "destinations" && country && destinations[country]) return <><PageHero eyebrow="Study abroad" title={`Study in ${country[0].toUpperCase() + country.slice(1)}.`} description={destinations[country]} /><section className="container-page max-w-3xl py-16"><h2 className="section-title">Plan your pathway</h2><p className="mt-4 leading-8">Speak with Dijon Consultants to explore suitable universities, application requirements and your student-visa route.</p><Link className="btn-primary mt-7" href="/contact">Talk to an advisor</Link></section></>;
+  const page = pages[section];
+  if (!page || country) notFound();
+  return <><PageHero {...page} /><section className="container-page max-w-3xl py-16"><div className="space-y-5">{page.body.map((paragraph) => <p key={paragraph} className="rounded-xl bg-white p-5 leading-7 shadow-sm">{paragraph}</p>)}</div>{section === "contact" && <Link className="btn-primary mt-7" href="mailto:info@dijonconsultants.com">Email Dijon Consultants</Link>}</section></>;
+}
