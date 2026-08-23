@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang="en">
       <body>
         <Header />
-        <main>{children}</main>
+        <main><ScrollReveal />{children}</main>
         <Footer />
       </body>
     </html>
