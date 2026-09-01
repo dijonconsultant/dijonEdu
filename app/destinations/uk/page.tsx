@@ -1,0 +1,5 @@
+import { DestinationPage } from "@/components/destination-page";
+
+export default function UnitedKingdomPage() {
+  return <DestinationPage country="the United Kingdom" overview="The United Kingdom offers internationally recognised universities, diverse student cities and a wide choice of programmes for students seeking a global academic experience." reasons={["A broad range of universities and specialist institutions.", "Extensive programme choice across undergraduate and postgraduate study.", "A multicultural student experience in cities across England, Scotland, Wales and Northern Ireland.", "English-language learning in an internationally connected academic environment."]} fields={["Business & Management", "Computer Science", "Engineering", "Health & Life Sciences", "Arts, Media & Design"]} />;
+}

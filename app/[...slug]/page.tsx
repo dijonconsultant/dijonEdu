@@ -12,7 +12,7 @@ const pages: Record<string, { eyebrow: string; title: string; description: strin
   terms: { eyebrow: "Legal", title: "Terms of use", description: "The terms that apply when using the Dijon Consultants website.", body: ["Website content is general information and is not a guarantee of admission or visa approval.", "Please contact us for guidance specific to your circumstances."] }
 };
 
-const destinations: Record<string, string> = { portugal: "Portugal blends respected education with a welcoming, vibrant student experience.", poland: "Poland offers a growing range of English-taught programmes and a rich cultural setting.", latvia: "Latvia is an appealing European study destination with an international outlook.", hungary: "Hungary combines academic tradition, affordable living and lively student cities." };
+const destinations: Record<string, string> = { portugal: "Portugal blends respected education with a welcoming, vibrant student experience.", poland: "Poland offers a growing range of English-taught programmes and a rich cultural setting.", latvia: "Latvia is an appealing European study destination with an international outlook.", hungary: "Hungary combines academic tradition, affordable living and lively student cities.", germany: "Germany offers research-led education and an international academic environment.", uk: "The United Kingdom offers globally recognised universities and a broad range of programmes.", spain: "Spain combines a vibrant culture with diverse higher-education options." };
 
 export default function CatchAllPage({ params }: { params: { slug: string[] } }) {
   const [section, country] = params.slug;
