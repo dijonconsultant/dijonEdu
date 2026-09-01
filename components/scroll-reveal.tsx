@@ -17,18 +17,23 @@ export function ScrollReveal() {
       });
     }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
 
-    const observeSections = () => {
-      Array.from(main.children).forEach((child) => {
-        if (child.tagName === "SECTION" && !observed.has(child)) {
-          observed.add(child);
-          observer.observe(child);
-        }
-      });
+    const observe = (element: Element) => {
+      if (!observed.has(element)) {
+        observed.add(element);
+        observer.observe(element);
+      }
     };
 
-    observeSections();
-    const mutations = new MutationObserver(observeSections);
-    mutations.observe(main, { childList: true });
+    const observeContent = () => {
+      Array.from(main.children).forEach((child) => {
+        if (child.tagName === "SECTION") observe(child);
+      });
+      main.querySelectorAll(".team-profile").forEach(observe);
+    };
+
+    observeContent();
+    const mutations = new MutationObserver(observeContent);
+    mutations.observe(main, { childList: true, subtree: true });
 
     return () => {
       mutations.disconnect();
