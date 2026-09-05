@@ -30,10 +30,12 @@ export function SupportWidget() {
       </div>
       <div className="space-y-2 p-4">
         {faqs.map(([question, answer], index) => <div key={question}>
-          <button type="button" className="flex w-full items-center justify-between gap-3 rounded-lg border border-slate-200 px-3 py-3 text-left text-sm font-semibold text-navy transition hover:border-gold" aria-expanded={selectedFaq === index} onClick={() => setSelectedFaq(selectedFaq === index ? null : index)}>
-            <span>{question}</span><span className="text-lg font-normal">{selectedFaq === index ? "-" : "+"}</span>
+          <button type="button" className="flex w-full items-center justify-between gap-3 rounded-lg border border-slate-200 px-3 py-3 text-left text-sm font-semibold text-navy transition duration-200 hover:border-gold hover:bg-slate-50" aria-expanded={selectedFaq === index} aria-controls={`support-answer-${index}`} onClick={() => setSelectedFaq(selectedFaq === index ? null : index)}>
+            <span>{question}</span><span className={`text-lg font-normal transition-transform duration-300 ease-out ${selectedFaq === index ? "rotate-45" : "rotate-0"}`}>+</span>
           </button>
-          {selectedFaq === index && <p className="px-3 pb-2 pt-2 text-sm leading-6 text-slate-600">{answer}</p>}
+          <div id={`support-answer-${index}`} className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out ${selectedFaq === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+            <div className="min-h-0 overflow-hidden"><p className="px-3 pb-2 pt-2 text-sm leading-6 text-slate-600">{answer}</p></div>
+          </div>
         </div>)}
         <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-4 py-3 text-sm font-semibold text-white transition hover:bg-[#1fb957]">
           <WhatsAppIcon /> Chat on WhatsApp
