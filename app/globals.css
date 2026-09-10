@@ -2,95 +2,176 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 html { scroll-behavior: smooth; }
-body { @apply bg-cream text-slate-700 antialiased; }
+body { @apply bg-cream text-slate-700 antialiased; font-family: 'Inter', sans-serif; }
 
 @layer components {
   .container-page { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
   .btn-primary { @apply inline-flex items-center justify-center rounded-full bg-gold px-5 py-3 font-semibold text-white transition hover:bg-amber-600; }
   .btn-secondary { @apply inline-flex items-center justify-center rounded-full border border-navy px-5 py-3 font-semibold text-navy transition hover:bg-navy hover:text-white; }
   .section-title { @apply font-serif text-3xl font-bold tracking-tight text-navy sm:text-4xl; }
+  .glass-card { @apply rounded-2xl border border-white/30 bg-white/10 backdrop-blur-md; }
 }
 
+/* ── Scroll reveal ── */
 main > section > .container-page > * {
   opacity: 0;
   transform: translate3d(0, 36px, 0);
   transition: opacity 520ms cubic-bezier(0.16, 1, 0.3, 1), transform 720ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
-
-main > section.is-visible > .container-page > * {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
+main > section.is-visible > .container-page > * { opacity: 1; transform: translate3d(0, 0, 0); }
 main > section.is-visible > .container-page > :nth-child(2) { transition-delay: 100ms; }
 main > section.is-visible > .container-page > :nth-child(3) { transition-delay: 180ms; }
 main > section.is-visible > .container-page > :nth-child(4) { transition-delay: 260ms; }
-
 main > section:nth-child(2).is-visible > .container-page > * { transition-delay: 180ms; }
 main > section:nth-child(2).is-visible > .container-page > :nth-child(2) { transition-delay: 280ms; }
 main > section:nth-child(2).is-visible > .container-page > :nth-child(3) { transition-delay: 360ms; }
 
+/* ── Team profiles ── */
 .team-profile {
-  opacity: 0;
-  transform: translate3d(0, 28px, 0);
+  opacity: 0; transform: translate3d(0, 28px, 0);
   transition: opacity 500ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.team-profile.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
+.team-profile.is-visible { opacity: 1; transform: translate3d(0, 0, 0); }
 .team-profile.is-visible:nth-child(2) { transition-delay: 120ms; }
-.team-profile.is-visible:nth-child(3) { transition-delay: 120ms; }
+.team-profile.is-visible:nth-child(3) { transition-delay: 240ms; }
 .team-profile img { transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1); }
 .team-profile:hover img { transform: scale(1.045); }
 
+/* ── Step items ── */
 .step-item {
-  opacity: 0;
-  transform: translate3d(0, 24px, 0);
+  opacity: 0; transform: translate3d(0, 24px, 0);
   transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
   transition-delay: var(--step-delay);
 }
-
-.is-visible .step-item {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
-}
-
+.is-visible .step-item { opacity: 1; transform: translate3d(0, 0, 0); }
 .step-card {
   transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms ease, border-color 300ms ease;
   border: 1px solid transparent;
 }
-
-.step-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(217, 154, 49, 0.45);
-  box-shadow: 0 18px 35px rgba(27, 58, 99, 0.12);
-}
-
-.step-number {
-  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), background-color 350ms ease;
-}
-
-.step-item:hover .step-number {
-  transform: scale(1.1) rotate(-6deg);
-  background-color: #D99A31;
-}
-
-.step-connector {
-  transform-origin: top;
-  transform: scaleY(0);
-  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: calc(var(--step-delay) + 180ms);
-}
-
+.step-card:hover { transform: translateY(-6px); border-color: rgba(217, 154, 49, 0.45); box-shadow: 0 18px 35px rgba(27, 58, 99, 0.12); }
+.step-number { transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), background-color 350ms ease; }
+.step-item:hover .step-number { transform: scale(1.1) rotate(-6deg); background-color: #D99A31; }
+.step-connector { transform-origin: top; transform: scaleY(0); transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1); transition-delay: calc(var(--step-delay) + 180ms); }
 .is-visible .step-connector { transform: scaleY(1); }
 
+/* ── Fancy animations ── */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-18px); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(3deg); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(217, 154, 49, 0.3); }
+  50% { box-shadow: 0 0 45px rgba(217, 154, 49, 0.7); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes blob {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+}
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes counter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-float-delay { animation: float 6s ease-in-out infinite 2s; }
+.animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-scale-in { animation: scale-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+.animate-blob { animation: blob 8s ease-in-out infinite; }
+.animate-blob-delay { animation: blob 8s ease-in-out infinite 3s; }
+.animate-gradient { background-size: 200% 200%; animation: gradient-shift 5s ease infinite; }
+
+.shimmer-text {
+  background: linear-gradient(90deg, #D99A31 0%, #f5c842 40%, #D99A31 60%, #a87420 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ── Hero particles (CSS-only dots) ── */
+.hero-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(217, 154, 49, 0.4);
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── Destination cards ── */
+.dest-card {
+  position: relative; overflow: hidden;
+  transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 400ms ease;
+}
+.dest-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(27,58,99,0.04) 0%, rgba(217,154,49,0.06) 100%);
+  opacity: 0; transition: opacity 400ms ease;
+}
+.dest-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 24px 50px rgba(27, 58, 99, 0.15); }
+.dest-card:hover::before { opacity: 1; }
+.dest-flag {
+  transition: transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.dest-card:hover .dest-flag { transform: scale(1.15) rotate(-5deg); }
+
+/* ── Stats counter ── */
+.stat-item { animation: counter 0.6s cubic-bezier(0.16,1,0.3,1) both; }
+
+/* ── Gradient border ── */
+.gradient-border {
+  position: relative;
+  background: white;
+  border-radius: 1rem;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute; inset: -2px;
+  border-radius: calc(1rem + 2px);
+  background: linear-gradient(135deg, #1B3A63, #D99A31, #1B3A63);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.gradient-border:hover::before { opacity: 1; }
+
+/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   main > section > .container-page > *, .team-profile, .step-item { opacity: 1; transform: none; transition: none; }
   .step-card, .step-number, .step-connector { transform: none; transition: none; }
+  .animate-float, .animate-float-slow, .animate-float-delay,
+  .animate-pulse-glow, .animate-spin-slow, .animate-blob, .animate-blob-delay,
+  .animate-gradient, .hero-particle { animation: none; }
 }
