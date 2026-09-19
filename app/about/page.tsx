@@ -120,17 +120,35 @@ export default function AboutPage() {
           <div className="mt-12 space-y-8">
             {team.map((member, index) => (
               <article key={member.name} className="team-profile overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-sm lg:grid lg:grid-cols-[minmax(19rem,0.78fr)_1fr]">
-                <div className="relative h-[28rem] overflow-hidden lg:h-full">
-                  <Image src={member.image} alt={`${member.name} at Dijon Consultants`} fill className="object-cover transition-transform duration-700 hover:scale-105" style={{ objectPosition: member.position }} sizes="(min-width: 1024px) 40vw, 100vw" priority={index === 0} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
+                {/* Image — always visible, fixed aspect ratio on mobile */}
+                <div className="relative w-full overflow-hidden" style={{ minHeight: "300px", height: "clamp(300px, 55vw, 450px)" }}>
+                  <Image
+                    src={member.image}
+                    alt={`${member.name} at Dijon Consultants`}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    style={{ objectPosition: member.position }}
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    priority={index < 2}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-transparent" />
+                  {/* Name overlay on mobile */}
+                  <div className="absolute bottom-4 left-4 lg:hidden">
+                    <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold backdrop-blur-sm">
+                      {member.designation}
+                    </span>
+                    <h3 className="mt-2 font-serif text-2xl font-bold text-white drop-shadow-lg">{member.name}</h3>
+                  </div>
                 </div>
-                <div className="flex min-h-[28rem] flex-col justify-center p-8 sm:p-12">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold w-fit">
+
+                {/* Text content */}
+                <div className="flex flex-col justify-center p-6 sm:p-10 lg:p-12">
+                  <span className="hidden lg:inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gold w-fit">
                     {member.designation}
                   </span>
-                  <h3 className="mt-5 font-serif text-4xl font-bold text-white sm:text-5xl">{member.name}</h3>
-                  <p className="mt-4 max-w-2xl leading-7 text-slate-300">{member.summary}</p>
-                  <div className="mt-7 border-t border-white/10 pt-6">
+                  <h3 className="hidden lg:block mt-5 font-serif text-4xl font-bold text-white sm:text-5xl">{member.name}</h3>
+                  <p className="mt-4 max-w-2xl leading-7 text-slate-300 text-sm sm:text-base">{member.summary}</p>
+                  <div className="mt-6 border-t border-white/10 pt-5">
                     <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold">Key Responsibilities</p>
                     <ul className="mt-3 space-y-2 text-sm leading-6 text-slate-300">
                       {member.responsibilities.map((r) => (
@@ -141,14 +159,14 @@ export default function AboutPage() {
                       ))}
                     </ul>
                   </div>
-                  <dl className="mt-8 grid gap-6 border-t border-white/10 pt-7 sm:grid-cols-2">
+                  <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-white/10 pt-5">
                     <div>
                       <dt className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Role</dt>
-                      <dd className="mt-2 text-xl font-semibold text-white">{member.role}</dd>
+                      <dd className="mt-1.5 text-base font-semibold text-white">{member.role}</dd>
                     </div>
                     <div>
                       <dt className="text-xs font-bold uppercase tracking-[0.14em] text-slate-400">Qualification</dt>
-                      <dd className="mt-2 text-lg leading-7 text-slate-300">{member.qualification}</dd>
+                      <dd className="mt-1.5 text-sm leading-6 text-slate-300">{member.qualification}</dd>
                     </div>
                   </dl>
                 </div>
