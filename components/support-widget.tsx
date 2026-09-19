@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
 
 const whatsappUrl = "https://wa.me/923333007385";
 
@@ -139,20 +138,7 @@ export function SupportWidget() {
                     }`}
                   >
                     {msg.role === "assistant" ? (
-                      <ReactMarkdown
-                        components={{
-                          p: ({ node, ...props }) => <p className="mb-2 last:mb-0" {...props} />,
-                          ul: ({ node, ...props }) => <ul className="mb-2 list-inside list-disc" {...props} />,
-                          ol: ({ node, ...props }) => <ol className="mb-2 list-inside list-decimal" {...props} />,
-                          li: ({ node, ...props }) => <li className="mb-1" {...props} />,
-                          strong: ({ node, ...props }) => <strong className="font-semibold text-slate-900" {...props} />,
-                          h1: ({ node, ...props }) => <h1 className="mb-2 mt-3 font-bold text-lg" {...props} />,
-                          h2: ({ node, ...props }) => <h2 className="mb-2 mt-3 font-bold text-base" {...props} />,
-                          h3: ({ node, ...props }) => <h3 className="mb-2 mt-3 font-semibold text-base" {...props} />,
-                        }}
-                      >
-                        {msg.content}
-                      </ReactMarkdown>
+                      <FormattedMessage text={msg.content} />
                     ) : (
                       msg.content
                     )}
@@ -222,4 +208,40 @@ export function SupportWidget() {
       </div>
     </div>
   );
+}
+
+function FormattedMessage({ text }: { text: string }) {
+  const paragraphs = text.split("\n\n");
+  return (
+    <div className="space-y-2 text-sm leading-relaxed">
+      {paragraphs.map((p, idx) => {
+        const lines = p.split("\n");
+        const isList = lines.length > 1 && lines.every((l) => l.trim().startsWith("- ") || l.trim().startsWith("* ") || /^\d+\.\s/.test(l.trim()));
+        if (isList) {
+          return (
+            <ul key={idx} className="list-disc pl-4 space-y-1">
+              {lines.map((item, lIdx) => {
+                const cleanItem = item.replace(/^[-*]\s+|\d+\.\s+/, "");
+                return <li key={lIdx}>{renderInline(cleanItem)}</li>;
+              })}
+            </ul>
+          );
+        }
+        return <p key={idx}>{renderInline(p)}</p>;
+      })}
+    </div>
+  );
+}
+
+function renderInline(text: string) {
+  const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={i} className="font-semibold text-slate-900">{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith("*") && part.endsWith("*")) {
+      return <em key={i}>{part.slice(1, -1)}</em>;
+    }
+    return part;
+  });
 }

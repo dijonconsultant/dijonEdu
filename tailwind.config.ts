@@ -5,9 +5,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: "#1B3A63",
-        gold: "#D99A31",
-        cream: "#FAF8F2"
+        // Shared semantic names keep every page on the same brand palette.
+        navy: "#17191D",
+        gold: "#C91F2A",
+        cream: "#F7F7F5"
       }
     }
   },

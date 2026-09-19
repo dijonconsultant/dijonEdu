@@ -1,0 +1,104 @@
+
+> dijon-consultants@0.1.0 dev
+> next dev
+
+  ▲ Next.js 14.2.31
+  - Local:        http://localhost:3000
+
+ ✓ Starting...
+ ✓ Ready in 8.6s
+ ○ Compiling / ...
+ ✓ Compiled / in 13.9s (508 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ GET / 200 in 177ms
+ ○ Compiling /[...slug] ...
+ ✓ Compiled /[...slug] in 1177ms (516 modules)
+ GET /favicon.ico 404 in 2944ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ✓ Compiled in 1628ms (508 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ✓ Compiled in 5.4s (508 modules)
+ ✓ Compiled in 3.1s (494 modules)
+ ✓ Compiled in 904ms (259 modules)
+ ✓ Compiled in 2.4s (508 modules)
+ ✓ Compiled in 1163ms (494 modules)
+ ✓ Compiled in 2.2s (494 modules)
+ ✓ Compiled in 1906ms (494 modules)
+ ✓ Compiled in 2.3s (508 modules)
+ ✓ Compiled in 1176ms (494 modules)
+ ✓ Compiled in 2.1s (508 modules)
+ ✓ Compiled in 1482ms (494 modules)
+ ✓ Compiled in 855ms (259 modules)
+ ⨯ ./components/footer.tsx
+Error: Failed to read source code from C:\Users\maham\OneDrive\Desktop\dijon\components\footer.tsx
+
+Caused by:
+    The system cannot find the file specified. (os error 2)
+
+Import trace for requested module:
+./components/footer.tsx
+./app/layout.tsx
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 12.8s (721 modules)
+ ✓ Compiled in 738ms (431 modules)
+ ✓ Compiled in 516ms (290 modules)
+ GET / 200 in 1364ms
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ○ Compiling /about ...
+ ✓ Compiled /about in 754ms (735 modules)
+ ✓ Compiled in 550ms (444 modules)
+ ○ Compiling /services ...
+ ✓ Compiled /services in 576ms (723 modules)
+ ✓ Compiled in 6.7s (737 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ✓ Compiled in 1901ms (737 modules)
+ ✓ Compiled in 1291ms (737 modules)
+ ✓ Compiled in 684ms (444 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ GET / 200 in 217ms
+ ✓ Compiled in 1768ms (737 modules)
+ ✓ Compiled in 1147ms (737 modules)
+ ✓ Compiled in 1632ms (737 modules)
+ ✓ Compiled in 1440ms (444 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ○ Compiling /faq ...
+ ✓ Compiled /faq in 944ms (743 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ✓ Compiled in 17.6s (743 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ○ Compiling /contact ...
+ ✓ Compiled /contact in 855ms (731 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ✓ Compiled in 2.6s (745 modules)
+ ○ Compiling /destinations ...
+ ✓ Compiled /destinations in 1390ms (754 modules)
+ ○ Compiling /destinations/portugal ...
+ ✓ Compiled /destinations/portugal in 879ms (743 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ✓ Compiled in 1973ms (753 modules)
+ ✓ Compiled in 1466ms (753 modules)
+ ✓ Compiled in 1458ms (753 modules)
+ ✓ Compiled in 1007ms (446 modules)
+ ✓ Compiled in 1421ms (753 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ ✓ Compiled / in 290ms (309 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+ GET / 200 in 894ms
+ ○ Compiling /destinations/latvia ...
+ ✓ Compiled /destinations/latvia in 2.5s (755 modules)
+ ✓ Compiled in 591ms (446 modules)
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies
+<w> [webpack.cache.PackFileCacheStrategy] Caching failed for pack: Error: Unable to snapshot resolve dependencies

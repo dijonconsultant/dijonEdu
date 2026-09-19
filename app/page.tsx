@@ -1,12 +1,17 @@
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
 import { CTAButton } from "@/components/cta-button";
+import { AnimatedCounter } from "@/components/animated-counter";
+import { HeroHeadline } from "@/components/hero-headline";
+import { ParallaxHero } from "@/components/parallax-hero";
+import { FAQPreview } from "@/components/faq-preview";
+import { LatestUpdatesPreview } from "@/components/latest-updates-preview";
 
 const stats = [
-  { value: "500+", label: "Students Guided" },
-  { value: "7", label: "Countries" },
-  { value: "98%", label: "Satisfaction Rate" },
-  { value: "5★", label: "Client Rating" },
+  { value: 500, suffix: "+", label: "Students Guided" },
+  { value: 7, suffix: "", label: "Countries" },
+  { value: 98, suffix: "%", label: "Satisfaction Rate" },
+  { value: 5, suffix: "★", label: "Client Rating" },
 ];
 
 const reasons = [
@@ -33,17 +38,8 @@ export default function HomePage() {
     <>
       {/* ── HERO ── */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-navy">
-        {/* Background image with parallax overlay */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero-campus.jpg"
-            alt="European university campus"
-            fill
-            className="object-cover object-center opacity-30"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-navy/90 via-navy/70 to-[#0d2240]/90" />
-        </div>
+        {/* Parallax Hero Background */}
+        <ParallaxHero />
 
         {/* Floating decorative blobs */}
         <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
@@ -60,25 +56,24 @@ export default function HomePage() {
         <div className="pointer-events-none absolute right-[-120px] top-[-120px] h-[500px] w-[500px] rounded-full border border-gold/10 animate-spin-slow hidden lg:block" />
         <div className="pointer-events-none absolute right-[-60px] top-[-60px] h-[350px] w-[350px] rounded-full border border-gold/15 animate-spin-slow hidden lg:block" style={{ animationDirection: "reverse", animationDuration: "15s" }} />
 
-        <div className="container-page relative z-10 py-24">
-          <div className="grid items-center gap-14 lg:grid-cols-2">
+        <div className="container-page relative z-10 py-12 sm:py-16 lg:py-20">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* Left: text */}
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-gold backdrop-blur-sm">
                 <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
                 Your European Education Starts Here
               </span>
-              <h1 className="mt-6 font-serif text-5xl font-bold leading-tight text-white sm:text-6xl lg:text-7xl">
-                Study in{" "}
-                <span className="shimmer-text">Europe</span>
-                <br />
-                with Expert Support
-              </h1>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-300">
+              
+              {/* Word-by-word staggered headline */}
+              <HeroHeadline />
+
+              <p className="mt-5 max-w-xl text-base sm:text-lg leading-7 sm:leading-8 text-slate-300">
                 We help students from Pakistan explore universities in Portugal, Poland, Latvia,
                 Hungary, Germany, UK and Spain — from first enquiry to arrival.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
+              
+              <div className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
                 <CTAButton href="/contact" variant="light" className="shadow-lg animate-pulse-glow">
                   Apply Now →
                 </CTAButton>
@@ -90,11 +85,13 @@ export default function HomePage() {
                 </CTAButton>
               </div>
 
-              {/* Stats row */}
-              <div className="mt-12 grid grid-cols-4 gap-4">
+              {/* Stats row with interactive AnimatedCounter */}
+              <div className="mt-10 grid grid-cols-4 gap-3 sm:gap-4 border-t border-white/10 pt-6">
                 {stats.map((s, i) => (
                   <div key={s.label} className="stat-item text-center" style={{ animationDelay: `${i * 0.15}s` }}>
-                    <p className="font-serif text-2xl font-bold text-gold sm:text-3xl">{s.value}</p>
+                    <p className="font-serif text-2xl font-bold text-gold sm:text-3xl">
+                      <AnimatedCounter target={s.value} suffix={s.suffix} duration={1700} />
+                    </p>
                     <p className="mt-1 text-xs text-slate-400">{s.label}</p>
                   </div>
                 ))}
@@ -111,6 +108,7 @@ export default function HomePage() {
                     width={480}
                     height={480}
                     className="h-auto w-full object-cover"
+                    priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/50 to-transparent rounded-3xl" />
                 </div>
@@ -134,7 +132,7 @@ export default function HomePage() {
         {/* Wave divider */}
         <div className="absolute bottom-0 left-0 right-0 z-10">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z" fill="#FAF8F2" />
+            <path d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z" fill="#F7F7F5" />
           </svg>
         </div>
       </section>
@@ -152,8 +150,8 @@ export default function HomePage() {
           {reasons.map((r, i) => (
             <div
               key={r.title}
-              className="gradient-border group relative overflow-hidden rounded-2xl bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl"
-              style={{ animationDelay: `${i * 0.1}s` }}
+              className="why-choose-card gradient-border group relative overflow-hidden rounded-2xl bg-white p-7 shadow-sm transition-all duration-300 hover:shadow-xl"
+              style={{ animationDelay: `${i * 0.08}s` }}
             >
               {/* Glow on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-navy/5 to-gold/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -174,7 +172,7 @@ export default function HomePage() {
         </div>
         <div className="absolute top-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full rotate-180">
-            <path d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z" fill="#1B3A63" />
+            <path d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z" fill="#17191D" />
           </svg>
         </div>
 
@@ -212,8 +210,11 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── LATEST UPDATES & BLOG PREVIEW ── */}
+      <LatestUpdatesPreview />
+
       {/* ── SOCIAL PROOF STRIP ── */}
-      <section className="overflow-hidden bg-white py-14">
+      <section className="overflow-hidden bg-white py-14 border-b border-slate-100">
         <div className="container-page text-center">
           <p className="text-sm font-bold uppercase tracking-[0.18em] text-gold">Trusted By Students Across Pakistan</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-8 text-slate-300">
@@ -223,6 +224,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ── DEDICATED FAQ PREVIEW (3-4 TOP QUESTIONS) ── */}
+      <FAQPreview />
 
       {/* ── CTA ── */}
       <section className="container-page py-20">

@@ -1,0 +1,10 @@
+<svg width="720" height="220" viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Dijon Consultant</title>
+  <g transform="translate(12 8)">
+    <path d="M18 26H125C158 26 181 48 181 81C181 114 158 136 125 136H62V184H18V26ZM62 65V98H119C130 98 137 91 137 81C137 72 130 65 119 65H62Z" fill="#17191D"/>
+    <path d="M223 24C163 24 137 65 137 104C137 145 163 185 223 185C250 185 276 175 295 157L268 129C256 140 242 145 225 145C194 145 175 127 175 104C175 82 194 64 225 64C242 64 256 69 268 80L295 51C276 33 250 24 223 24Z" fill="#C91F2A"/>
+  </g>
+  <text x="318" y="86" fill="#17191D" font-family="Arial, sans-serif" font-size="45" font-weight="800" letter-spacing="1">DIJON</text>
+  <text x="318" y="133" fill="#C91F2A" font-family="Arial, sans-serif" font-size="36" font-weight="800" letter-spacing="1">CONSULTANT</text>
+  <text x="320" y="165" fill="#3C3F45" font-family="Arial, sans-serif" font-size="17" font-weight="600">Your Gateway to Global Education</text>
+</svg>

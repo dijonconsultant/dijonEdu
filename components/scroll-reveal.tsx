@@ -15,7 +15,7 @@ export function ScrollReveal() {
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    }, { threshold: 0.1, rootMargin: "0px 0px -6% 0px" });
 
     const observe = (element: Element) => {
       if (!observed.has(element)) {
@@ -28,7 +28,7 @@ export function ScrollReveal() {
       Array.from(main.children).forEach((child) => {
         if (child.tagName === "SECTION") observe(child);
       });
-      main.querySelectorAll(".team-profile").forEach(observe);
+      main.querySelectorAll(".team-profile, .reveal-item, .dest-card, .why-choose-card, .update-card").forEach(observe);
     };
 
     observeContent();

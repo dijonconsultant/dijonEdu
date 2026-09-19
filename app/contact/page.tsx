@@ -69,7 +69,7 @@ export default function ContactPage() {
         </div>
         <div className="absolute bottom-0 left-0 right-0">
           <svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-            <path d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z" fill="#FAF8F2" />
+            <path d="M0 60V30C240 0 480 60 720 30C960 0 1200 60 1440 30V60H0Z" fill="#F7F7F5" />
           </svg>
         </div>
       </section>
@@ -90,7 +90,7 @@ export default function ContactPage() {
         ) : (
           <div className="overflow-hidden rounded-3xl bg-white shadow-sm">
             {/* Form header */}
-            <div className="bg-gradient-to-r from-navy to-[#0d2240] px-8 py-6 text-white">
+            <div className="bg-gradient-to-r from-navy to-[#30333a] px-8 py-6 text-white">
               <h2 className="font-serif text-2xl font-bold">Your Study Abroad Profile</h2>
               <p className="mt-1 text-sm text-slate-300">Fill in your details below — it only takes 2 minutes</p>
             </div>
