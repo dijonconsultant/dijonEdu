@@ -9,7 +9,7 @@ export function Footer() {
   return <footer className="mt-16 bg-navy py-12 text-slate-200">
     <div className="container-page grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
       <div>
-        <Image src="/dijon-consultant-logo.svg" alt="Dijon Consultant" width={260} height={80} className="h-auto w-52 rounded bg-white p-2" />
+        <Image src="/dijon-consultant-logo.svg" alt="Dijon Consultant" width={300} height={100} className="h-auto w-56 rounded bg-white p-2" />
         <p className="mt-3 text-sm leading-6 text-slate-300">International education guidance for students applying from Pakistan.</p>
         <a className="mt-5 block font-semibold text-white hover:text-slate-300" href="tel:00351925152120">00351 92 5152 120</a>
         <a className="mt-2 block text-sm text-slate-300 hover:text-white" href="https://wa.me/923333007385" target="_blank" rel="noopener noreferrer">+92 333 3007385 (WhatsApp)</a>

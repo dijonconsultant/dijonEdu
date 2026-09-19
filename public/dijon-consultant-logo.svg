@@ -1,10 +1,116 @@
-<svg width="720" height="220" viewBox="0 0 720 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <title>Dijon Consultant</title>
-  <g transform="translate(12 8)">
-    <path d="M18 26H125C158 26 181 48 181 81C181 114 158 136 125 136H62V184H18V26ZM62 65V98H119C130 98 137 91 137 81C137 72 130 65 119 65H62Z" fill="#17191D"/>
-    <path d="M223 24C163 24 137 65 137 104C137 145 163 185 223 185C250 185 276 175 295 157L268 129C256 140 242 145 225 145C194 145 175 127 175 104C175 82 194 64 225 64C242 64 256 69 268 80L295 51C276 33 250 24 223 24Z" fill="#C91F2A"/>
-  </g>
-  <text x="318" y="86" fill="#17191D" font-family="Arial, sans-serif" font-size="45" font-weight="800" letter-spacing="1">DIJON</text>
-  <text x="318" y="133" fill="#C91F2A" font-family="Arial, sans-serif" font-size="36" font-weight="800" letter-spacing="1">CONSULTANT</text>
-  <text x="320" y="165" fill="#3C3F45" font-family="Arial, sans-serif" font-size="17" font-weight="600">Your Gateway to Global Education</text>
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Dijon Consultant — Official Logo Recreation
+  
+  The original logo has:
+  1. A large "D" (black, bold serif) and "C" (red, bold serif) interlocked/overlapping
+     The D is on the left, C is on the right and wraps around the D.
+  2. "DIJON CONSULTANT" in bold red caps, centered below the monogram
+  3. A thin horizontal line separator
+  4. "your Gateway to Global Education" in smaller black/dark text, centered below
+  
+  All inside or associated with a white circular badge.
+  
+  Format: horizontal logo for header use — circle badge LEFT, text RIGHT
+  ViewBox: 640 x 200
+-->
+<svg width="640" height="200" viewBox="0 0 640 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Dijon Consultant – your Gateway to Global Education</title>
+
+  <!-- ══════════════════════════════════════
+       LEFT SIDE: Circular Badge with D+C Monogram
+       ══════════════════════════════════════ -->
+
+  <!-- White circle -->
+  <circle cx="100" cy="100" r="92" fill="white" stroke="#DDDDDD" stroke-width="1.5"/>
+
+  <!-- 
+    The "D" letter: classic Times-Roman/Bodoni bold capital
+    Vertical left stem + bold curved bowl
+    Black (#111)
+    Positioned left-center of circle
+  -->
+  <!-- D outer shape (bold serif D) -->
+  <path d="
+    M 35 28
+    L 35 172
+    L 73 172
+    Q 110 172 128 153
+    Q 152 130 152 100
+    Q 152 70 128 47
+    Q 110 28 73 28
+    Z
+  " fill="#111111"/>
+  <!-- D inner cutout (white counter creates the D bowl opening) -->
+  <path d="
+    M 57 50
+    L 57 150
+    L 74 150
+    Q 98 150 112 133
+    Q 126 117 126 100
+    Q 126 83 112 67
+    Q 98 50 74 50
+    Z
+  " fill="white"/>
+
+  <!--
+    The "C" letter: bold serif C in red (#C81E27)
+    Overlaps the top-right of D, curves around
+    The C is slightly larger and positioned to interlock with D
+  -->
+  <path d="
+    M 164 46
+    Q 148 30 127 26
+    Q 102 22 85 38
+    Q 63 58 63 100
+    Q 63 142 85 162
+    Q 102 178 128 174
+    Q 149 170 165 154
+    L 156 140
+    Q 143 153 128 155
+    Q 109 157 97 142
+    Q 83 125 83 100
+    Q 83 75 97 58
+    Q 109 43 128 45
+    Q 143 46 155 60
+    Z
+  " fill="#C81E27"/>
+
+  <!-- ══════════════════════════════════════
+       RIGHT SIDE: Brand Name + Tagline
+       ══════════════════════════════════════ -->
+
+  <!-- "DIJON" — large, bold, black, serif -->
+  <text
+    x="214" y="82"
+    font-family="'Times New Roman', 'Georgia', 'Palatino Linotype', serif"
+    font-size="54"
+    font-weight="bold"
+    letter-spacing="5"
+    fill="#111111"
+  >DIJON</text>
+
+  <!-- "CONSULTANT" — bold, red, serif, slightly smaller -->
+  <text
+    x="214" y="128"
+    font-family="'Times New Roman', 'Georgia', 'Palatino Linotype', serif"
+    font-size="32"
+    font-weight="bold"
+    letter-spacing="4"
+    fill="#C81E27"
+  >CONSULTANT</text>
+
+  <!-- Thin red separator line -->
+  <line x1="214" y1="139" x2="624" y2="139" stroke="#C81E27" stroke-width="0.8" opacity="0.40"/>
+
+  <!-- Tagline — italic, smaller, dark grey -->
+  <text
+    x="214" y="162"
+    font-family="'Times New Roman', 'Georgia', 'Palatino Linotype', serif"
+    font-size="15.5"
+    font-weight="400"
+    font-style="italic"
+    letter-spacing="0.3"
+    fill="#555555"
+  >your Gateway to Global Education</text>
 </svg>

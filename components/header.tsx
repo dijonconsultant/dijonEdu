@@ -41,10 +41,10 @@ export function Header() {
           <Image
             src="/dijon-consultant-logo.svg"
             alt="Dijon Consultant"
-            width={220}
-            height={68}
+            width={384}
+            height={120}
             priority
-            className="h-11 w-auto transition-transform duration-300 group-hover:scale-[1.02]"
+            className="h-14 w-auto transition-transform duration-300 group-hover:scale-[1.02]"
           />
         </Link>
 
