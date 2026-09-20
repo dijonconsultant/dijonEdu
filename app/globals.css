@@ -7,6 +7,29 @@
 html { scroll-behavior: smooth; }
 body { @apply bg-cream text-slate-700 antialiased; font-family: 'Inter', sans-serif; }
 
+/* Keyboard users should always be able to see where they are. */
+:focus-visible {
+  outline: 3px solid #B01020;
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  transform: translateY(-160%);
+  border-radius: 0.5rem;
+  background: #17191D;
+  padding: 0.75rem 1rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  transition: transform 160ms ease;
+}
+.skip-link:focus { transform: translateY(0); }
+
+input::placeholder, textarea::placeholder { color: #94A3B8; opacity: 1; }
+
 @layer components {
   .container-page { @apply mx-auto w-full max-w-6xl px-5 sm:px-8; }
   .btn-primary { @apply inline-flex items-center justify-center rounded-full bg-gold px-5 py-3 font-semibold text-white transition; }
@@ -53,6 +76,20 @@ main > section.container-page.is-visible > :nth-child(4) { transition-delay: 260
 .update-card.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
+}
+
+/* Shared card/form entrance for every page. ScrollReveal adds this class in the
+   browser, so the site retains usable static content when JavaScript is off. */
+.reveal-card {
+  opacity: 0;
+  transform: translate3d(0, 32px, 0) scale(0.98);
+  transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1), transform 750ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 /* ── Team profiles ── */
@@ -173,6 +210,18 @@ main > section.container-page.is-visible > :nth-child(4) { transition-delay: 260
   animation: shimmer 3s linear infinite;
 }
 
+/* On dark surfaces the brand-red accent does not have enough contrast.
+   Keep these labels and highlighted words white so they remain readable. */
+:is(.bg-navy, .bg-black, .bg-slate-900, .bg-gray-900, [class*="from-navy"], [class*="from-black"]) .text-gold {
+  color: #FFFFFF;
+}
+
+:is(.bg-navy, .bg-black, .bg-slate-900, .bg-gray-900, [class*="from-navy"], [class*="from-black"]) .shimmer-text {
+  color: #FFFFFF;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
 /* ── Hero particles (CSS-only dots) ── */
 .hero-particle {
   position: absolute;
@@ -203,6 +252,11 @@ main > section.container-page.is-visible > :nth-child(4) { transition-delay: 260
   animation: flag-bounce 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+/* Keep every destination card—including Spain—the same width in the grid. */
+@media (min-width: 1024px) {
+  .dest-card:last-child { grid-column: auto; }
+}
+
 /* ── Stats counter ── */
 .stat-item { animation: counter 0.6s cubic-bezier(0.16,1,0.3,1) both; }
 
@@ -222,7 +276,7 @@ main > section.container-page.is-visible > :nth-child(4) { transition-delay: 260
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  main > section > .container-page > *, .team-profile, .step-item { opacity: 1; transform: none; transition: none; }
+  main > section > .container-page > *, .team-profile, .step-item, .reveal-card { opacity: 1; transform: none; transition: none; }
   .step-card, .step-number, .step-connector { transform: none; transition: none; }
   .animate-float, .animate-float-slow, .animate-float-delay,
   .animate-pulse-glow, .animate-spin-slow, .animate-blob, .animate-blob-delay,

@@ -43,6 +43,14 @@ export function SupportWidget() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isLoading]);
 
+  useEffect(() => {
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsChatOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = input.trim();
@@ -106,6 +114,8 @@ export function SupportWidget() {
         <section
           className="w-[min(22rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl"
           aria-label="Dijon Consultants support chat"
+          role="dialog"
+          aria-modal="false"
         >
           <div className="bg-navy px-5 py-4 text-white flex justify-between items-start">
             <div>
@@ -159,6 +169,7 @@ export function SupportWidget() {
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
+                aria-label="Your question"
                 placeholder="Type your question…"
                 disabled={isLoading}
                 className="flex-1 rounded border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-navy disabled:opacity-50"

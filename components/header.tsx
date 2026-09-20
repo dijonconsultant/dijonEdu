@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { CTAButton } from "@/components/cta-button";
 
@@ -17,6 +18,7 @@ const links = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const closeMenu = () => setIsOpen(false);
@@ -57,13 +59,10 @@ export function Header() {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-0.5 xl:gap-1.5 text-[13px] 2xl:text-sm font-medium text-slate-700 lg:flex">
           {links.map(([label, href]) => (
-            <Link
-              key={href}
-              href={href}
-              className="relative whitespace-nowrap rounded-lg px-2.5 py-1.5 2xl:px-3 2xl:py-2 transition-colors hover:bg-slate-100 hover:text-navy group"
-            >
+            <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}
+              className={`relative whitespace-nowrap rounded-lg px-2.5 py-1.5 2xl:px-3 2xl:py-2 transition-colors hover:bg-slate-100 hover:text-navy group ${pathname === href ? "bg-slate-100 text-navy" : ""}`}>
               {label}
-              <span className="absolute bottom-1 left-2.5 right-2.5 h-0.5 scale-x-0 rounded-full bg-gold transition-transform group-hover:scale-x-100" />
+              <span className={`absolute bottom-1 left-2.5 right-2.5 h-0.5 rounded-full bg-gold transition-transform ${pathname === href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"}`} />
             </Link>
           ))}
         </nav>
@@ -91,6 +90,7 @@ export function Header() {
           className="relative flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-xl p-2 text-navy transition-all duration-200 hover:bg-slate-100 lg:hidden"
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
+          aria-controls="mobile-navigation"
           onClick={() => setIsOpen(!isOpen)}
         >
           <span className={`h-0.5 w-5 bg-current rounded-full transition-all duration-300 ${isOpen ? "rotate-45 translate-y-[7px]" : ""}`} />
@@ -106,7 +106,7 @@ export function Header() {
         }`}
       >
         {/* Clean white panel — no blur/dark bg */}
-        <div className="bg-white border-b border-slate-200 shadow-2xl">
+        <div id="mobile-navigation" className="bg-white border-b border-slate-200 shadow-2xl" aria-hidden={!isOpen}>
           {/* Brand accent bar at top */}
           <div className="h-1 w-full bg-gradient-to-r from-navy via-gold to-navy" />
 
@@ -116,7 +116,8 @@ export function Header() {
                 key={href}
                 href={href}
                 onClick={closeMenu}
-                className="flex items-center justify-between rounded-xl px-4 py-3.5 text-[15px] font-medium text-slate-800 transition-all duration-150 hover:bg-slate-50 hover:pl-6 hover:text-gold border-b border-slate-100 last:border-0"
+                aria-current={pathname === href ? "page" : undefined}
+                className={`flex items-center justify-between rounded-xl px-4 py-3.5 text-[15px] font-medium text-slate-800 transition-all duration-150 hover:bg-slate-50 hover:pl-6 hover:text-gold border-b border-slate-100 last:border-0 ${pathname === href ? "bg-slate-50 text-navy" : ""}`}
               >
                 {label}
                 <svg className="h-4 w-4 text-slate-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

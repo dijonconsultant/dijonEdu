@@ -33,6 +33,15 @@ const destinations = [
   { name: "Spain", description: "A vibrant culture, diverse cities and an engaging student experience.", emoji: "🇪🇸", slug: "spain", color: "from-red-600 to-yellow-500" },
 ];
 
+const destinationCodes: Record<string, string> = {
+  portugal: "PT", poland: "PL", latvia: "LV", hungary: "HU", germany: "DE", uk: "GB", spain: "ES",
+};
+
+const destinationAccents: Record<string, string> = {
+  portugal: "#2E8B57", poland: "#DC2626", latvia: "#8B1E3F", hungary: "#16804B",
+  germany: "#D4A017", uk: "#2563EB", spain: "#D97706",
+};
+
 export default function HomePage() {
   return (
     <>
@@ -60,11 +69,7 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-2">
             {/* Left: text */}
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.18em] text-gold backdrop-blur-sm">
-                <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" />
-                Your European Education Starts Here
-              </span>
-              
+
               {/* Word-by-word staggered headline */}
               <HeroHeadline />
 
@@ -192,18 +197,25 @@ export default function HomePage() {
               <Link
                 key={dest.name}
                 href={`/destinations/${dest.slug}`}
-                className="dest-card group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
+                aria-label={`Explore study options in ${dest.name}`}
+                className="dest-card group relative flex min-h-[18rem] flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/[0.06] p-7 shadow-lg transition-colors hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.09]"
                 style={{ animationDelay: `${i * 0.08}s` }}
               >
-                <div className="dest-flag text-5xl">{dest.emoji}</div>
-                <h3 className="mt-5 font-serif text-xl font-bold text-white">{dest.name}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-400">{dest.description}</p>
-                <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-gold">
+                <div className="flex items-start justify-between gap-4">
+                  <span className="font-serif text-5xl font-bold tracking-[-0.06em] text-white/20 transition-colors duration-300 group-hover:text-white/35">
+                    {destinationCodes[dest.slug]}
+                  </span>
+                  <span className="rounded-full border border-white/10 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-slate-300">Study destination</span>
+                </div>
+                <div className="mt-auto pt-8">
+                  <span className="mb-4 block h-1 w-12 rounded-full transition-all duration-300 group-hover:w-20" style={{ backgroundColor: destinationAccents[dest.slug] }} />
+                  <h3 className="font-serif text-2xl font-bold text-white">{dest.name}</h3>
+                  <p className="mt-3 max-w-sm text-sm leading-6 text-slate-300">{dest.description}</p>
+                </div>
+                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white">
                   Discover
                   <span className="transition-transform group-hover:translate-x-1">→</span>
                 </span>
-                {/* Hover glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-gold/0 to-gold/10 opacity-0 transition-opacity duration-400 group-hover:opacity-100" />
               </Link>
             ))}
           </div>

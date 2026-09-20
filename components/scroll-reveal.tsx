@@ -28,7 +28,18 @@ export function ScrollReveal() {
       Array.from(main.children).forEach((child) => {
         if (child.tagName === "SECTION") observe(child);
       });
-      main.querySelectorAll(".team-profile, .reveal-item, .dest-card, .why-choose-card, .update-card").forEach(observe);
+
+      // Give cards and forms the same staggered entrance used by the Services page.
+      // The class is added here so server-rendered content remains visible if JavaScript
+      // is unavailable.
+      const revealables = main.querySelectorAll(".team-profile, article:not(.team-profile), form, section .grid > a, section .grid > li, .reveal-item, .dest-card, .why-choose-card, .update-card");
+      revealables.forEach((element, index) => {
+        if (!element.classList.contains("team-profile")) {
+          element.classList.add("reveal-card");
+          (element as HTMLElement).style.setProperty("--reveal-delay", `${(index % 6) * 80}ms`);
+        }
+        observe(element);
+      });
     };
 
     observeContent();

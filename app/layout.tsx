@@ -14,8 +14,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
+        <a href="#main-content" className="skip-link">Skip to main content</a>
         <Header />
-        <main><ScrollReveal />{children}</main>
+        <main id="main-content" tabIndex={-1}><ScrollReveal />{children}</main>
         <Footer />
         <SupportWidget />
       </body>

@@ -59,7 +59,7 @@ export default function ContactPage() {
           {/* Quick contact strip */}
           <div className="mt-8 flex flex-wrap gap-4">
             {contactInfo.map((c) => (
-              <a key={c.label} href={c.href} target="_blank" rel="noopener noreferrer"
+              <a key={c.label} href={c.href} {...(c.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20">
                 <span>{c.icon}</span>
                 <span>{c.value}</span>
@@ -77,7 +77,7 @@ export default function ContactPage() {
       {/* ── FORM ── */}
       <section className="container-page max-w-5xl py-24">
         {status === "success" ? (
-          <div className="flex flex-col items-center justify-center rounded-3xl bg-white p-16 text-center shadow-sm">
+          <div className="flex flex-col items-center justify-center rounded-3xl bg-white p-16 text-center shadow-sm" role="status" aria-live="polite">
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-4xl">✅</div>
             <h2 className="mt-6 font-serif text-3xl font-bold text-navy">Enquiry Received!</h2>
             <p className="mt-4 max-w-md leading-7 text-slate-500">
@@ -163,7 +163,7 @@ export default function ContactPage() {
 
               <div className="sm:col-span-2">
                 {status === "error" && (
-                  <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+                  <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700" role="alert">
                     ⚠️ {error}
                   </div>
                 )}
